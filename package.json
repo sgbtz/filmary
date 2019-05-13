@@ -15,5 +15,14 @@
   "bugs": {
     "url": "https://github.com/sgbtz/filmary/issues"
   },
-  "homepage": "https://github.com/sgbtz/filmary#readme"
+  "homepage": "https://github.com/sgbtz/filmary#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.0.0",
+    "express": "^4.16.4",
+    "fs": "0.0.1-security",
+    "https": "^1.0.0",
+    "method-override": "^3.0.0",
+    "morgan": "^1.9.1"
+  }
 }
