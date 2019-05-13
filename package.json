@@ -1,0 +1,19 @@
+{
+  "name": "filmary",
+  "version": "1.0.0",
+  "description": "Library for movies and TV Shows",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sgbtz/filmary.git"
+  },
+  "author": "Sebastiá Guisasola, Ezequiel Montero",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sgbtz/filmary/issues"
+  },
+  "homepage": "https://github.com/sgbtz/filmary#readme"
+}
