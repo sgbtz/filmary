@@ -698,11 +698,11 @@ var SignupComponent = /** @class */ (function () {
         this.loginService.createUser(signupInfo)
             .subscribe(function (res) {
             localStorage.setItem("username", res.login);
-            _this.router.navigate(["/home/login"]);
+            _this.router.navigate(["/dashboard"]);
         });
     };
     SignupComponent.prototype.signIn = function () {
-        this.router.navigate(["/home/login"]);
+        this.router.navigate(["/dashboard"]);
     };
     SignupComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
