@@ -13,7 +13,9 @@ var userSchema = new Schema({
   lastName: String,
   username: String,
   password: String,
-	country: String,
+	email: String,
+	nationality: String,
+	birthDate: Date,
 	_films: [ Schema.Types.ObjectId ]
 
 });
