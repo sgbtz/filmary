@@ -1,5 +1,9 @@
 // app/models/user.js
 
+// for generating pass
+var bcrypt = require("bcrypt");
+var SALT_WORK_FACTOR = 10;
+
 // grab the mongoose module
 var mongoose = require("mongoose");
 
@@ -20,15 +24,10 @@ var userSchema = new Schema({
 	_films: [ Schema.Types.ObjectId ]
 
 });
-
-var User = mongoose.model("User", userSchema);
-
-module.exports.model = User;
-module.exports.schema = userSchema;
-
 // define pre function for save (hash passwords)
 userSchema.pre("save", function(next) {
 	var user = this;
+
 	if(!user.isModified("password")) return next();
 
 	bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
@@ -36,13 +35,21 @@ userSchema.pre("save", function(next) {
 		user.salt = salt;
 		bcrypt.hash(user.password, salt, function(err, hash) {
 			if(err) return next(err);
-
 			user.password = hash;
 			next();
 		});
 	});
 
 });
+
+var User = mongoose.model("User", userSchema);
+
+
+
+module.exports.model = User;
+module.exports.schema = userSchema;
+
+
 
 module.exports.newUser = function(req, res){
 	// creating new user
@@ -59,7 +66,9 @@ module.exports.newUser = function(req, res){
 
 module.exports.getUser = function(req, res) {
 
-  User.find({name: req.body.name}, (user, err) => {
-    res.json(user);
+  User.findOne({_id: req.params._id}, (err, user) => {
+		if (err) console.log(err)
+		else
+    	res.json(user);
   });
 }

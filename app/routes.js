@@ -2,6 +2,7 @@
 
 // grab models
 var user = require("./models/user");
+var film = require("./models/film");
 
 // grab controllers
 var auth = require("./controllers/auth");
@@ -16,11 +17,10 @@ module.exports = function(app){
 		router.post("/login-user", auth.getTokenUser);
 
 		// routes which need previous token check
-		router.use(function (req, res, next) {
-			auth.checkToken(req, res, app, next);
-		});
+		router.use(auth.checkToken);
 		// get a user information
 		router.get("/user/:_id", user.getUser);
+		router.get("/films", film.getFilms);
 
 	app.use("/api", router);
 

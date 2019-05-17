@@ -133,6 +133,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
 /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
 /* harmony import */ var _signup_signup_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./signup/signup.component */ "./src/app/signup/signup.component.ts");
+/* harmony import */ var _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./dashboard/dashboard.component */ "./src/app/dashboard/dashboard.component.ts");
+/* harmony import */ var _library_library_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./library/library.component */ "./src/app/library/library.component.ts");
+
+
 
 
 
@@ -155,7 +159,9 @@ var AppModule = /** @class */ (function () {
                 _app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"],
                 _home_home_component__WEBPACK_IMPORTED_MODULE_9__["HomeComponent"],
                 _login_login_component__WEBPACK_IMPORTED_MODULE_10__["LoginComponent"],
-                _signup_signup_component__WEBPACK_IMPORTED_MODULE_11__["SignupComponent"]
+                _signup_signup_component__WEBPACK_IMPORTED_MODULE_11__["SignupComponent"],
+                _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_12__["DashboardComponent"],
+                _library_library_component__WEBPACK_IMPORTED_MODULE_13__["LibraryComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -192,6 +198,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "routes", function() { return routes; });
 /* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
 /* harmony import */ var _signup_signup_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./signup/signup.component */ "./src/app/signup/signup.component.ts");
+/* harmony import */ var _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dashboard/dashboard.component */ "./src/app/dashboard/dashboard.component.ts");
+
 
 
 var routes = [
@@ -205,10 +213,88 @@ var routes = [
         component: _home_home_component__WEBPACK_IMPORTED_MODULE_0__["HomeComponent"]
     },
     {
+        path: 'home/login',
+        component: _home_home_component__WEBPACK_IMPORTED_MODULE_0__["HomeComponent"]
+    },
+    {
         path: 'register',
         component: _signup_signup_component__WEBPACK_IMPORTED_MODULE_1__["SignupComponent"]
-    }
+    },
+    {
+        path: 'dashboard',
+        component: _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_2__["DashboardComponent"]
+    },
 ];
+
+
+/***/ }),
+
+/***/ "./src/app/dashboard/dashboard.component.css":
+/*!***************************************************!*\
+  !*** ./src/app/dashboard/dashboard.component.css ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "section {\n  width: 100%;\n  min-height: 100vh;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background-color: #283740;\n}\n.sidenav-container {\n  width: 100%;\n  min-height: 100vh;\n}\n.sidenav {\n  width: 10%;\n  min-height: 100vh;\n  background-color: #192227;\n  box-shadow:         1px 0 60px #192227;\n}\n.content {\n  width: 90%;\n  min-height: 100vh;\n  background-color: #283740;\n  display: flex;\n  flex-flow: column;\n  justify-content: center;\n  align-items: center;\n}\n.fixed-top {\n  position: fixed;\n  top: 5%;\n  left: 20%;\n  z-index: +1;\n  display: flex;\n  flex-flow: row;\n  justify-content: flex-start;\n  align-items: center;\n  width: 70%;\n}\n.search-input {\n  width: 50%;\n}\n.add-film-btn {\n  position: fixed;\n  bottom: 5%;\n  right: 5%;\n  z-index: +1;\n  height: 4em;\n  width: 4em;\n  margin-right: 5%;\n  color: #283740;\n  background-color:#5cffcd;\n  box-shadow: 0px 0px 50px -1px rgba(0,0,0,0.8);\n}\n.add-film-btn mat-icon {\n  font-weight: bold;\n}\n.add-film span {\n  font-weight: bold;\n  color:  white;\n}\napp-library {\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZGFzaGJvYXJkL2Rhc2hib2FyZC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsV0FBVztFQUNYLGlCQUFpQjtFQUNqQixhQUFhO0VBQ2IsdUJBQXVCO0VBQ3ZCLG1CQUFtQjtFQUNuQix5QkFBeUI7QUFDM0I7QUFDQTtFQUNFLFdBQVc7RUFDWCxpQkFBaUI7QUFDbkI7QUFDQTtFQUNFLFVBQVU7RUFDVixpQkFBaUI7RUFDakIseUJBQXlCO0VBR3pCLHNDQUFzQztBQUN4QztBQUNBO0VBQ0UsVUFBVTtFQUNWLGlCQUFpQjtFQUNqQix5QkFBeUI7RUFDekIsYUFBYTtFQUNiLGlCQUFpQjtFQUNqQix1QkFBdUI7RUFDdkIsbUJBQW1CO0FBQ3JCO0FBQ0E7RUFDRSxlQUFlO0VBQ2YsT0FBTztFQUNQLFNBQVM7RUFDVCxXQUFXO0VBQ1gsYUFBYTtFQUNiLGNBQWM7RUFDZCwyQkFBMkI7RUFDM0IsbUJBQW1CO0VBQ25CLFVBQVU7QUFDWjtBQUNBO0VBQ0UsVUFBVTtBQUNaO0FBQ0E7RUFDRSxlQUFlO0VBQ2YsVUFBVTtFQUNWLFNBQVM7RUFDVCxXQUFXO0VBQ1gsV0FBVztFQUNYLFVBQVU7RUFDVixnQkFBZ0I7RUFDaEIsY0FBYztFQUNkLHdCQUF3QjtFQUd4Qiw2Q0FBNkM7QUFDL0M7QUFFQTtFQUNFLGlCQUFpQjtBQUNuQjtBQUVBO0VBQ0UsaUJBQWlCO0VBQ2pCLGFBQWE7QUFDZjtBQUNBO0FBQ0EiLCJmaWxlIjoic3JjL2FwcC9kYXNoYm9hcmQvZGFzaGJvYXJkLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJzZWN0aW9uIHtcbiAgd2lkdGg6IDEwMCU7XG4gIG1pbi1oZWlnaHQ6IDEwMHZoO1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzI4Mzc0MDtcbn1cbi5zaWRlbmF2LWNvbnRhaW5lciB7XG4gIHdpZHRoOiAxMDAlO1xuICBtaW4taGVpZ2h0OiAxMDB2aDtcbn1cbi5zaWRlbmF2IHtcbiAgd2lkdGg6IDEwJTtcbiAgbWluLWhlaWdodDogMTAwdmg7XG4gIGJhY2tncm91bmQtY29sb3I6ICMxOTIyMjc7XG4gIC1tb3otYm94LXNoYWRvdzogICAgMXB4IDAgNjBweCAjMTkyMjI3O1xuICAtd2Via2l0LWJveC1zaGFkb3c6IDFweCAwIDYwcHggIzE5MjIyNztcbiAgYm94LXNoYWRvdzogICAgICAgICAxcHggMCA2MHB4ICMxOTIyMjc7XG59XG4uY29udGVudCB7XG4gIHdpZHRoOiA5MCU7XG4gIG1pbi1oZWlnaHQ6IDEwMHZoO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjgzNzQwO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWZsb3c6IGNvbHVtbjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG4uZml4ZWQtdG9wIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICB0b3A6IDUlO1xuICBsZWZ0OiAyMCU7XG4gIHotaW5kZXg6ICsxO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWZsb3c6IHJvdztcbiAganVzdGlmeS1jb250ZW50OiBmbGV4LXN0YXJ0O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICB3aWR0aDogNzAlO1xufVxuLnNlYXJjaC1pbnB1dCB7XG4gIHdpZHRoOiA1MCU7XG59XG4uYWRkLWZpbG0tYnRuIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBib3R0b206IDUlO1xuICByaWdodDogNSU7XG4gIHotaW5kZXg6ICsxO1xuICBoZWlnaHQ6IDRlbTtcbiAgd2lkdGg6IDRlbTtcbiAgbWFyZ2luLXJpZ2h0OiA1JTtcbiAgY29sb3I6ICMyODM3NDA7XG4gIGJhY2tncm91bmQtY29sb3I6IzVjZmZjZDtcbiAgLXdlYmtpdC1ib3gtc2hhZG93OiAwcHggMHB4IDUwcHggLTFweCByZ2JhKDAsMCwwLDAuOCk7XG4gIC1tb3otYm94LXNoYWRvdzogMHB4IDBweCA1MHB4IC0xcHggcmdiYSgwLDAsMCwwLjgpO1xuICBib3gtc2hhZG93OiAwcHggMHB4IDUwcHggLTFweCByZ2JhKDAsMCwwLDAuOCk7XG59XG5cbi5hZGQtZmlsbS1idG4gbWF0LWljb24ge1xuICBmb250LXdlaWdodDogYm9sZDtcbn1cblxuLmFkZC1maWxtIHNwYW4ge1xuICBmb250LXdlaWdodDogYm9sZDtcbiAgY29sb3I6ICB3aGl0ZTtcbn1cbmFwcC1saWJyYXJ5IHtcbn1cbiJdfQ== */"
+
+/***/ }),
+
+/***/ "./src/app/dashboard/dashboard.component.html":
+/*!****************************************************!*\
+  !*** ./src/app/dashboard/dashboard.component.html ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<section class=\"mat-typography\">\n  <mat-spinner *ngIf=\"!(user && films)\"></mat-spinner>\n  <mat-sidenav-container class=\"sidenav-container\" *ngIf=\"(user && films)\">\n    <mat-sidenav mode=\"side\" class=\"sidenav\" mode=\"side\" opened>\n\n    </mat-sidenav>\n    <mat-sidenav-content class=\"content\">\n      <div class=\"fixed-top\">\n        <mat-form-field class=\"search-input\">\n          <input matInput placeholder=\"Search\" />\n        </mat-form-field>\n      </div>\n      <app-library [films]=\"films\">\n      </app-library>\n      <button mat-icon-button class=\"add-film-btn\" (click)=\"addFilm()\">\n        <mat-icon>add</mat-icon>\n      </button>\n    </mat-sidenav-content>\n  </mat-sidenav-container>\n</section>\n"
+
+/***/ }),
+
+/***/ "./src/app/dashboard/dashboard.component.ts":
+/*!**************************************************!*\
+  !*** ./src/app/dashboard/dashboard.component.ts ***!
+  \**************************************************/
+/*! exports provided: DashboardComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DashboardComponent", function() { return DashboardComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_login_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/login.service */ "./src/app/services/login.service.ts");
+/* harmony import */ var _services_film_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/film.service */ "./src/app/services/film.service.ts");
+
+
+
+
+var DashboardComponent = /** @class */ (function () {
+    function DashboardComponent(loginService, filmService) {
+        this.loginService = loginService;
+        this.filmService = filmService;
+    }
+    DashboardComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.loginService.getUser().subscribe(function (user) {
+            _this.user = user;
+            _this.filmService.getFilms(user._films).subscribe(function (films) { return _this.films = films; });
+        });
+    };
+    DashboardComponent.prototype.addFilm = function () {
+    };
+    DashboardComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-dashboard',
+            template: __webpack_require__(/*! ./dashboard.component.html */ "./src/app/dashboard/dashboard.component.html"),
+            styles: [__webpack_require__(/*! ./dashboard.component.css */ "./src/app/dashboard/dashboard.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_login_service__WEBPACK_IMPORTED_MODULE_2__["LoginService"],
+            _services_film_service__WEBPACK_IMPORTED_MODULE_3__["FilmService"]])
+    ], DashboardComponent);
+    return DashboardComponent;
+}());
+
 
 
 /***/ }),
@@ -247,22 +333,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomeComponent", function() { return HomeComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../login/login.component */ "./src/app/login/login.component.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../login/login.component */ "./src/app/login/login.component.ts");
+
 
 
 
 
 var HomeComponent = /** @class */ (function () {
-    function HomeComponent(dialog) {
+    function HomeComponent(dialog, router, route) {
         this.dialog = dialog;
-        this.test = "Test";
+        this.router = router;
+        this.route = route;
     }
     HomeComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        // if the user has already logged in, redirect to dashboard
+        if (localStorage.getItem("isLoggedIn") == "true")
+            this.router.navigate(["/dashboard"]);
+        this.route.url.subscribe(function (url) {
+            if (url.length > 1 && url[1].path == "login")
+                _this.openLogin();
+        });
     };
     HomeComponent.prototype.openLogin = function () {
-        var loginDialogRef = this.dialog.open(_login_login_component__WEBPACK_IMPORTED_MODULE_3__["LoginComponent"], {
+        var _this = this;
+        var loginDialogRef = this.dialog.open(_login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"], {
             width: '350px'
+        });
+        loginDialogRef.afterClosed().subscribe(function (success) {
+            if (success)
+                _this.router.navigate(["/dashboard"]);
         });
     };
     HomeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -271,9 +373,71 @@ var HomeComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./home.component.html */ "./src/app/home/home.component.html"),
             styles: [__webpack_require__(/*! ./home.component.css */ "./src/app/home/home.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialog"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialog"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]])
     ], HomeComponent);
     return HomeComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/library/library.component.css":
+/*!***********************************************!*\
+  !*** ./src/app/library/library.component.css ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".films-list {\n  display: flex;\n  flex-flow: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n}\n\n.film {\n  width: 2em;\n  height: 3em;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbGlicmFyeS9saWJyYXJ5LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxhQUFhO0VBQ2IsY0FBYztFQUNkLDJCQUEyQjtFQUMzQix1QkFBdUI7QUFDekI7O0FBRUE7RUFDRSxVQUFVO0VBQ1YsV0FBVztBQUNiIiwiZmlsZSI6InNyYy9hcHAvbGlicmFyeS9saWJyYXJ5LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZmlsbXMtbGlzdCB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZmxvdzogcm93O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGZsZXgtc3RhcnQ7XG4gIGFsaWduLWl0ZW1zOiBmbGV4LXN0YXJ0O1xufVxuXG4uZmlsbSB7XG4gIHdpZHRoOiAyZW07XG4gIGhlaWdodDogM2VtO1xufVxuIl19 */"
+
+/***/ }),
+
+/***/ "./src/app/library/library.component.html":
+/*!************************************************!*\
+  !*** ./src/app/library/library.component.html ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<section class=\"films-list\">\n  <mat-card *ngFor=\"let film of films\" class=\"film\">\n  </mat-card>\n</section>\n"
+
+/***/ }),
+
+/***/ "./src/app/library/library.component.ts":
+/*!**********************************************!*\
+  !*** ./src/app/library/library.component.ts ***!
+  \**********************************************/
+/*! exports provided: LibraryComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LibraryComponent", function() { return LibraryComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var LibraryComponent = /** @class */ (function () {
+    function LibraryComponent() {
+    }
+    LibraryComponent.prototype.ngOnInit = function () {
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Array)
+    ], LibraryComponent.prototype, "films", void 0);
+    LibraryComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-library',
+            template: __webpack_require__(/*! ./library.component.html */ "./src/app/library/library.component.html"),
+            styles: [__webpack_require__(/*! ./library.component.css */ "./src/app/library/library.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], LibraryComponent);
+    return LibraryComponent;
 }());
 
 
@@ -298,7 +462,7 @@ module.exports = "h1 {\n  font-size: 1.5em;\n}\n.sign-up {\n  color: #2a2329;\n}
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h1 mat-dialog-title>Sign In or <span class=\"sign-up\" (click)=\"router.navigate(['/register']); dialogRef.close();\">Register</span></h1>\n<mat-divider></mat-divider>\n<form #loginForm=\"ngForm\" (ngSubmit)=\"onLogin()\">\n  <mat-dialog-content>\n      <mat-form-field [hideRequiredMarker]=\"true\">\n        <input matInput placeholder=\"Email or username\" [(ngModel)]=\"loginInfo.login\" #login=\"ngModel\"  name=\"login\" required>\n      </mat-form-field>\n      <div *ngIf=\"login.invalid && (login.dirty || login.touched)\"\n    class=\"alert alert-danger\">\n        <div *ngIf=\"login.errors.required\" class=\"required-error\">\n          Email or username is required.\n        </div>\n      </div>\n      <mat-form-field [hideRequiredMarker]=\"true\">\n        <input matInput type=\"password\" placeholder=\"Password\" [(ngModel)]=\"loginInfo.password\" #password=\"ngModel\" name=\"password\" required>\n      </mat-form-field>\n      <div *ngIf=\"password.invalid && (password.dirty || password.touched)\"\n    class=\"alert alert-danger\">\n        <div *ngIf=\"password.errors.required\" class=\"required-error\">\n          Password is required.\n        </div>\n      </div>\n  </mat-dialog-content>\n  <mat-dialog-actions>\n    <a class=\"forgot-password\" href=\"#\">Forgot password?</a>\n    <button mat-raised-button type=\"submit\" class=\"login-btn\">Login</button>\n  </mat-dialog-actions>\n</form>\n"
+module.exports = "<h1 mat-dialog-title>Sign In or <span class=\"sign-up\" (click)=\"router.navigate(['/register']); dialogRef.close();\">Register</span></h1>\n<mat-divider></mat-divider>\n<form #loginForm=\"ngForm\" (ngSubmit)=\"onLogin()\">\n  <mat-dialog-content>\n      <mat-form-field [hideRequiredMarker]=\"true\">\n        <input matInput placeholder=\"Email or username\" [(ngModel)]=\"loginInfo.login\" #login=\"ngModel\"  name=\"login\" required>\n      </mat-form-field>\n      <div *ngIf=\"login.invalid && (login.dirty || login.touched)\"\n    class=\"alert alert-danger\">\n        <div *ngIf=\"login.errors.required\" class=\"required-error\">\n          Email or username is required.\n        </div>\n      </div>\n      <mat-form-field [hideRequiredMarker]=\"true\">\n        <input matInput type=\"password\" placeholder=\"Password\" [(ngModel)]=\"loginInfo.password\" #password=\"ngModel\" name=\"password\" required>\n      </mat-form-field>\n      <div *ngIf=\"password.invalid && (password.dirty || password.touched)\"\n    class=\"alert alert-danger\">\n        <div *ngIf=\"password.errors.required\" class=\"required-error\">\n          Password is required.\n        </div>\n      </div>\n      <div *ngIf=\"failToast\" class=\"validation-error\">\n        Email/username or password is wrong.\n      </div>\n  </mat-dialog-content>\n  <mat-dialog-actions>\n    <a class=\"forgot-password\" href=\"#\">Forgot password?</a>\n    <button mat-raised-button type=\"submit\" class=\"login-btn\">Login</button>\n  </mat-dialog-actions>\n</form>\n"
 
 /***/ }),
 
@@ -334,14 +498,17 @@ var LoginComponent = /** @class */ (function () {
         this.loginService = loginService;
         this.authService = authService;
         this.loginInfo = new _models_login__WEBPACK_IMPORTED_MODULE_4__["Login"]({ login: localStorage.getItem("username") });
+        this.failToast = false;
     }
     LoginComponent.prototype.onLogin = function () {
         var _this = this;
         this.loginService.loginUser(this.loginInfo).subscribe(function (loginResponse) {
-            console.log(loginResponse);
             if (loginResponse.success) {
                 _this.authService.login(loginResponse._id, loginResponse.username, loginResponse.token);
-                _this.dialogRef.close();
+                _this.dialogRef.close(loginResponse.success);
+            }
+            else {
+                _this.failToast = true;
             }
         });
     };
@@ -399,7 +566,7 @@ var MaterialModule = /** @class */ (function () {
 /*!**************************************!*\
   !*** ./src/app/models/api-routes.ts ***!
   \**************************************/
-/*! exports provided: loginURL, signupURL, userURL */
+/*! exports provided: loginURL, signupURL, userURL, filmsURL */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -407,9 +574,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loginURL", function() { return loginURL; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signupURL", function() { return signupURL; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "userURL", function() { return userURL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filmsURL", function() { return filmsURL; });
 var loginURL = "api/login-user";
 var signupURL = "api/signup-user";
 var userURL = "api/user";
+var filmsURL = "api/films";
 
 
 /***/ }),
@@ -452,9 +621,8 @@ var Signup = /** @class */ (function () {
         this.email = signupInfo.email;
         this.password = signupInfo.password;
         this.name = signupInfo.name;
+        this.lastName = signupInfo.lastName;
         this.birthDate = signupInfo.birthDate;
-        this.gender = signupInfo.gender;
-        this.nationality = signupInfo.nationality;
     }
     return Signup;
 }());
@@ -536,6 +704,50 @@ var AuthService = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], AuthService);
     return AuthService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/film.service.ts":
+/*!******************************************!*\
+  !*** ./src/app/services/film.service.ts ***!
+  \******************************************/
+/*! exports provided: FilmService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FilmService", function() { return FilmService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _models_api_routes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../models/api-routes */ "./src/app/models/api-routes.ts");
+
+
+
+
+var FilmService = /** @class */ (function () {
+    function FilmService(http) {
+        this.http = http;
+    }
+    FilmService.prototype.getFilms = function (_films) {
+        var httpOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                "Authentication": localStorage.getItem("token")
+            }),
+            params: _films
+        };
+        return this.http.get(_models_api_routes__WEBPACK_IMPORTED_MODULE_3__["filmsURL"], httpOptions);
+    };
+    FilmService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], FilmService);
+    return FilmService;
 }());
 
 
@@ -632,7 +844,7 @@ module.exports = "section {\n  min-height: 100vh;\n  width: 100%;\n  display: fl
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<section>\n  <mat-card class=\"mat-elevation-z5\">\n    <mat-card-header>\n      <mat-card-title>\n        Register\n      </mat-card-title>\n      <mat-card-subtitle>\n        Create new user account\n      </mat-card-subtitle>\n    </mat-card-header>\n    <mat-divider [inset]=\"true\"></mat-divider>\n    <mat-card-content>\n      <form [formGroup]=\"signupForm\" (ngSubmit)=\"onSignup()\">\n        <div class=\"form-data\">\n          <mat-form-field appearance=\"outline\">\n            <mat-label>Username</mat-label>\n            <input matInput formControlName=\"username\" name=\"username\" placeholder=\"Username\">\n          </mat-form-field>\n          <mat-form-field class=\"birth-date\" appearance=\"outline\">\n            <mat-label>Birth Date</mat-label>\n            <input matInput [max]=\"maxDate\"  [matDatepicker]=\"birthDate\" placeholder=\"Birth Date\" id=\"birthDate\" formControlName=\"birthDate\" name=\"birthDate\">\n            <mat-datepicker-toggle matSuffix [for]=\"birthDate\"></mat-datepicker-toggle>\n            <mat-datepicker #birthDate startView=\"multi-year\"></mat-datepicker>\n          </mat-form-field>\n          <!--<mat-form-field appearance=\"outline\">\n            <mat-label>Name</mat-label>\n            <input matInput formControlName=\"name\" name=\"name\" placeholder=\"Name\">\n          </mat-form-field>-->\n          <mat-form-field appearance=\"outline\">\n            <mat-label>Email</mat-label>\n            <input matInput formControlName=\"email\" name=\"email\" placeholder=\"Email\">\n          </mat-form-field>\n          <div class=\"email-confirmation\">\n            <mat-form-field appearance=\"outline\">\n              <mat-label>Confirm Email</mat-label>\n              <input matInput formControlName=\"confirmEmail\" name=\"confirmEmail\" placeholder=\"Confirm Email\">\n              <div *ngIf=\"signupForm.errors?.emailConfirmation\" class=\"alert alert-danger\">\n                Email doesn't match\n              </div>\n            </mat-form-field>\n          </div>\n          <mat-form-field appearance=\"outline\">\n            <mat-label>Password</mat-label>\n            <input matInput type=\"password\" formControlName=\"password\" name=\"password\" placeholder=\"Password\">\n          </mat-form-field>\n          <div class=\"password-confirmation\">\n            <mat-form-field appearance=\"outline\">\n              <mat-label>Confirm Password</mat-label>\n              <input matInput type=\"password\" formControlName=\"confirmPassword\" name=\"confirmPassword\" placeholder=\"Confirm Password\">\n              <div *ngIf=\"signupForm.errors?.passwordConfirmation\" class=\"alert alert-danger\">\n                Password doesn't match\n              </div>\n            </mat-form-field>\n          </div>\n          <!--<mat-form-field appearance=\"outline\">\n            <mat-label>Nationality</mat-label>\n            <mat-select formControlName=\"nationality\" name=\"nationality\" placeholder=\"Nationality\">\n             <mat-option *ngFor=\"let nation of nations\" [value]=\"nation\">\n               {{nation}}\n             </mat-option>\n           </mat-select>\n          </mat-form-field>\n          <div class=\"gender-group\">\n            <mat-radio-group formControlName=\"gender\" name=\"gender\">\n              <mat-radio-button value=\"1\">Male</mat-radio-button>\n              <mat-radio-button value=\"2\">Female</mat-radio-button>\n              <mat-radio-button value=\"3\">Other</mat-radio-button>\n            </mat-radio-group>\n          </div>-->\n        </div>\n        <p>\n          Do you already have an account? <span class=\"sign-in\" (click)=\"signIn()\">Sign In</span>\n        </p>\n        <button mat-raised-button type=\"submit\" class=\"signup-btn\">Ready to go! </button>\n      </form>\n    </mat-card-content>\n  </mat-card>\n</section>\n"
+module.exports = "<section>\n  <mat-card class=\"mat-elevation-z5\">\n    <mat-card-header>\n      <mat-card-title>\n        Register\n      </mat-card-title>\n      <mat-card-subtitle>\n        Create new user account\n      </mat-card-subtitle>\n    </mat-card-header>\n    <mat-divider [inset]=\"true\"></mat-divider>\n    <mat-card-content>\n      <form [formGroup]=\"signupForm\" (ngSubmit)=\"onSignup()\">\n        <div class=\"form-data\">\n          <mat-form-field appearance=\"outline\">\n            <mat-label>Name</mat-label>\n            <input matInput formControlName=\"name\" name=\"name\" placeholder=\"Name\">\n          </mat-form-field>\n          <mat-form-field appearance=\"outline\">\n            <mat-label>Last Name</mat-label>\n            <input matInput formControlName=\"lastName\" name=\"lastName\" placeholder=\"Last Name\">\n          </mat-form-field>\n          <mat-form-field appearance=\"outline\">\n            <mat-label>Username</mat-label>\n            <input matInput formControlName=\"username\" name=\"username\" placeholder=\"Username\">\n          </mat-form-field>\n          <mat-form-field class=\"birth-date\" appearance=\"outline\">\n            <mat-label>Birth Date</mat-label>\n            <input matInput [max]=\"maxDate\"  [matDatepicker]=\"birthDate\" placeholder=\"Birth Date\" id=\"birthDate\" formControlName=\"birthDate\" name=\"birthDate\">\n            <mat-datepicker-toggle matSuffix [for]=\"birthDate\"></mat-datepicker-toggle>\n            <mat-datepicker #birthDate startView=\"multi-year\"></mat-datepicker>\n          </mat-form-field>\n          <mat-form-field appearance=\"outline\">\n            <mat-label>Email</mat-label>\n            <input matInput formControlName=\"email\" name=\"email\" placeholder=\"Email\">\n          </mat-form-field>\n          <div class=\"email-confirmation\">\n            <mat-form-field appearance=\"outline\">\n              <mat-label>Confirm Email</mat-label>\n              <input matInput formControlName=\"confirmEmail\" name=\"confirmEmail\" placeholder=\"Confirm Email\">\n              <div *ngIf=\"signupForm.errors?.emailConfirmation\" class=\"alert alert-danger\">\n                Email doesn't match\n              </div>\n            </mat-form-field>\n          </div>\n          <mat-form-field appearance=\"outline\">\n            <mat-label>Password</mat-label>\n            <input matInput type=\"password\" formControlName=\"password\" name=\"password\" placeholder=\"Password\">\n          </mat-form-field>\n          <div class=\"password-confirmation\">\n            <mat-form-field appearance=\"outline\">\n              <mat-label>Confirm Password</mat-label>\n              <input matInput type=\"password\" formControlName=\"confirmPassword\" name=\"confirmPassword\" placeholder=\"Confirm Password\">\n              <div *ngIf=\"signupForm.errors?.passwordConfirmation\" class=\"alert alert-danger\">\n                Password doesn't match\n              </div>\n            </mat-form-field>\n          </div>\n          <!--<mat-form-field appearance=\"outline\">\n            <mat-label>Nationality</mat-label>\n            <mat-select formControlName=\"nationality\" name=\"nationality\" placeholder=\"Nationality\">\n             <mat-option *ngFor=\"let nation of nations\" [value]=\"nation\">\n               {{nation}}\n             </mat-option>\n           </mat-select>\n          </mat-form-field>\n          <div class=\"gender-group\">\n            <mat-radio-group formControlName=\"gender\" name=\"gender\">\n              <mat-radio-button value=\"1\">Male</mat-radio-button>\n              <mat-radio-button value=\"2\">Female</mat-radio-button>\n              <mat-radio-button value=\"3\">Other</mat-radio-button>\n            </mat-radio-group>\n          </div>-->\n        </div>\n        <p>\n          Do you already have an account? <span class=\"sign-in\" (click)=\"signIn()\">Sign In</span>\n        </p>\n        <button mat-raised-button type=\"submit\" class=\"signup-btn\" [disabled]=\"!signupForm.valid\">Ready to go! </button>\n      </form>\n    </mat-card-content>\n  </mat-card>\n</section>\n"
 
 /***/ }),
 
@@ -678,9 +890,8 @@ var SignupComponent = /** @class */ (function () {
             password: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]("", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
             confirmPassword: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]("", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
             name: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]("", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
-            gender: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](),
+            lastName: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]("", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
             birthDate: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]("", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
-            nationality: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]()
         }, { validators: [_validators_email_confirmation_directive__WEBPACK_IMPORTED_MODULE_5__["confirmEmailValidator"], _validators_password_confirmation_directive__WEBPACK_IMPORTED_MODULE_6__["confirmPasswordValidator"]] });
     }
     SignupComponent.prototype.ngOnInit = function () { };
@@ -689,20 +900,20 @@ var SignupComponent = /** @class */ (function () {
         var signupInfo = new _models_signup__WEBPACK_IMPORTED_MODULE_8__["Signup"]({
             username: this.signupForm.value.username,
             email: this.signupForm.value.email,
+            lastName: this.signupForm.value.lastName,
             password: this.signupForm.value.password,
             name: this.signupForm.value.name,
-            gender: this.signupForm.value.gender,
             birthDate: this.signupForm.value.birthDate,
-            nationality: this.signupForm.value.nationality
         });
         this.loginService.createUser(signupInfo)
             .subscribe(function (res) {
+            console.log(res);
             localStorage.setItem("username", res.login);
             _this.router.navigate(["/dashboard"]);
         });
     };
     SignupComponent.prototype.signIn = function () {
-        this.router.navigate(["/dashboard"]);
+        this.router.navigate(["/home/login"]);
     };
     SignupComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

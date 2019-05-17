@@ -1,12 +1,11 @@
 // app/controllers/auth.js
-// grab de bcrypt module
+// grab de needed modules
 var bcrypt = require("bcrypt");
+var jwt = require("jsonwebtoken");
+// for generating pass
 var SALT_WORK_FACTOR = 10;
 
-var nodemailer = require("nodemailer");
-
-var jwt = require("jsonwebtoken");
-var Hostel = require("../models/hostel").model;
+// grab models
 var User = require("../models/user").model;
 
 module.exports = {
@@ -17,10 +16,10 @@ module.exports = {
 			// if there is an error retrieving, send the error
 			if(!user) {
 				User.findOne({ username: req.body.login }, function(err, user) {
-					auth(app, res, user, req.body.password);
+					auth(res, user, req.body.password);
 				});
 			} else
-				auth(app, res, user, req.body.password);
+				auth(res, user, req.body.password);
 		});
 
 	},
@@ -50,7 +49,7 @@ module.exports = {
 			});
 		}
 	},
-
+};
 // authentication callback
 function auth (res, member, password) {
 	if(!member){
@@ -58,7 +57,8 @@ function auth (res, member, password) {
 	} else if(member) {
 		// Check if password matches
 		bcrypt.hash(password, member.salt, function(err, hash) {
-			if(err) next(err);
+			console.log(err)
+			if(err) console.log(err);
 			if(member.password != hash) {
 				res.json({ success: false });
 			} else {

@@ -10,12 +10,17 @@ var https          = require("https");
 var bodyParser 	   = require("body-parser");
 var methodOverride = require("method-override");
 var morgan		     = require("morgan");
+var mongoose       = require("mongoose");
 
 // configuration ================================
 
 // configure env variables
 
 require('dotenv').config();
+
+// connect to db
+
+mongoose.connect(process.env.DB_URL, {useNewUrlParser: true});
 
 // set our port
 
