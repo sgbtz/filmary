@@ -17,7 +17,7 @@ module.exports.model = Film;
 module.exports.schema = filmSchema;
 
 module.exports.getFilms = function(req, res) {
-	console.log("getfulms")
+
 	_films = [];
 	for (film in req.query) {
 		_films.push( new mongoose.Types.ObjectId(req.query[film]) );

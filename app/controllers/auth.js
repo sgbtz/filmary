@@ -57,7 +57,7 @@ function auth (res, member, password) {
 	} else if(member) {
 		// Check if password matches
 		bcrypt.hash(password, member.salt, function(err, hash) {
-			console.log(err)
+
 			if(err) console.log(err);
 			if(member.password != hash) {
 				res.json({ success: false });
