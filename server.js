@@ -65,11 +65,7 @@ require("./app/routes")(app); // configure our routes
 // start app ====================================
 // startup our app at http://localhost:8080
 
-https.createServer({
-  key: fs.readFileSync('key.pem'),
-  cert: fs.readFileSync('cert.pem')
-}, app)
-.listen(port);
+app.listen(port);
 
 // shoutout to the user
 
