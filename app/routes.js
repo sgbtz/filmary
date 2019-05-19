@@ -21,6 +21,9 @@ module.exports = function(app){
 		// get a user information
 		router.get("/user/:_id", user.getUser);
 		router.get("/films", film.getFilms);
+		router.get("/catalogue", film.getCatalogue);
+		router.post("/add-film/:username", film.addFilm, film.newFilm, user.addFilmToLibrary)
+		router.put("/remove-film/:username/:film_id", user.checkFilmId, user.removeFilmFromLibrary);
 
 	app.use("/api", router);
 

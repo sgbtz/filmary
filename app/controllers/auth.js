@@ -69,7 +69,7 @@ function auth (res, member, password) {
 				};
 
 				var token = jwt.sign(payload, process.env.SECRET, {
-					expiresIn: "1h" // expires in 1 min
+					expiresIn: "24h" // expires in 1 h
 				});
 
 				res.json({

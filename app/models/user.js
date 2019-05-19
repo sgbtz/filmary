@@ -1,5 +1,8 @@
 // app/models/user.js
 
+// grab models
+var Film = require("./film").model;
+
 // for generating pass
 var bcrypt = require("bcrypt");
 var SALT_WORK_FACTOR = 10;
@@ -70,5 +73,44 @@ module.exports.getUser = function(req, res) {
 		if (err) console.log(err)
 		else
     	res.json(user);
+  });
+}
+
+module.exports.addFilmToLibrary = function(req, res) {
+
+  User.updateOne(
+		{ username: req.params.username},
+		{ $push: { _films: req.body._id } }
+		, function(err, user) {
+			if (err) console.log(err)
+			else
+	    	res.json(true);
+  });
+}
+
+module.exports.checkFilmId = function(req, res, next) {
+
+	if (req.params.film_id != "0") {
+		req.body.id = req.params.film_id;
+		next();
+	} else {
+		Film.findOne({ id: req.body.tmdb_id }, function(err, film) {
+			if(err) console.log(err)
+			else
+				req.body.id = film._id;
+				next();
+		})
+	}
+}
+
+module.exports.removeFilmFromLibrary = function(req, res) {
+
+  User.updateOne(
+		{ username: req.params.username},
+		{ $pull: { _films: { $in: req.body.id } } }
+		, function(err, user) {
+			if (err) console.log(err)
+			else
+	    	res.json(true);
   });
 }
